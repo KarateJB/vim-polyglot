@@ -16,7 +16,7 @@ let current_compiler = "msbuild"
 " setlocal makeprg=MSBuild.exe\ /clp:ErrorsOnly\ /nologo
 
 " Visual Studio 2022
-if s:big5_encoding
+if !s:big5_encoding
     setlocal makeprg=MSBuild.exe\ -clp:ErrorsOnly\ -nologo
 else
     setlocal makeprg=MSBuild.exe\ -clp:ErrorsOnly\ -nologo\ \|\ iconv\ -f\ BIG5\ -t\ utf-8
