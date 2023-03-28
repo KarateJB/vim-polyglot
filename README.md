@@ -258,6 +258,16 @@ autocmd BufEnter * set indentexpr=
 
 This will not affect smart autoindenting when starting a new line.
 
+## Support BIG5 encoding
+
+> Supports "dotnet" and "msbuild" so far.
+
+If you encounters the quick list shows garbled code in BIG5 encoding, try enable the option:
+
+```
+let g:polyglot_big5_encoding=1
+```
+
 
 ## Default settings
 
