@@ -1,22 +1,18 @@
 if exists("current_compiler")
 	finish
 endif
-let current_compiler = "msbuild"
-"let $PATH.=';'.shellescape('C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe';'
 
-" < Visual Studio 2012
-" setlocal makeprg=MSBuild.exe\ /nologo\ /v:q\ /property:GenerateFullPaths=true\ /clp:ErrorsOnly
-" setlocal makeprg=MSBuild.exe\ /clp:ErrorsOnly\ /nologo
-
-" Visual Studio 2022
-setlocal makeprg=MSBuild.exe\ -clp:ErrorsOnly\ -nologo
-setlocal errorformat=\ %#%f(%l\\\,%c):\ %m
-
+let s:big5_encoding = get(g:, 'polyglot_big5_encoding', 0)
+echo s:big5_encoding
 
 let current_compiler = "dotnet"
 
-" setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ error
-setlocal makeprg=dotnet\ build\ --nologo
+if !s:big5_encoding
+    setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ error\ \|\|\ true
+else
+    setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ -a\ error\ \|\ iconv\ -f\ BIG5\ -t\ utf-8
+endif
+
 setlocal errorformat=
     \%-A%.%#Microsoft%.%#,
     \%-ZBuild\ FAILED.,
