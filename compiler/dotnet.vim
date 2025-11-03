@@ -7,11 +7,11 @@ echo s:big5_encoding
 
 let current_compiler = "dotnet"
 
-if !s:big5_encoding
+" if !s:big5_encoding
     setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ error\ \|\|\ true
-else
-    setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ -a\ error\ \|\ iconv\ -f\ BIG5\ -t\ utf-8
-endif
+" else
+    " setlocal makeprg=dotnet\ build\ --nologo\ \|\ grep\ -a\ error\ \|\ iconv\ -f\ BIG5\ -t\ utf-8
+" endif
 
 setlocal errorformat=
     \%-A%.%#Microsoft%.%#,
