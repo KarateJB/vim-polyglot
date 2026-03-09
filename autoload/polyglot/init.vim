@@ -1696,6 +1696,10 @@ if !has_key(g:polyglot_is_disabled, 'cs')
   au BufNewFile,BufRead *.cs setf cs
 endif
 
+if !has_key(g:polyglot_is_disabled, 'linq')
+  au BufNewFile,BufRead *.linq setf cs
+endif
+
 if !has_key(g:polyglot_is_disabled, 'calendar')
   au BufNewFile,BufRead calendar setf calendar
   au BufNewFile,BufRead */share/calendar/calendar.* call s:StarSetf('calendar')
